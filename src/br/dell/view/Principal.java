@@ -204,7 +204,7 @@ public class Principal {
 					dao.alterarcadastro(hospede, quarto);
 					JOptionPane.showMessageDialog(null, "Informações alteradas com sucesso!");
 				} catch (Exception erro) {
-					JOptionPane.showMessageDialog(null, "Houve um erro, por favor verifique as informações e tente novamente!" + erro);	
+					JOptionPane.showMessageDialog(null, "Houve um erro, por favor verifique as informações e tente novamente!");	
 
 				}
 
@@ -216,6 +216,30 @@ public class Principal {
 		frmHotel.getContentPane().add(btnAlterar);
 		
 		btnCheckout = new JButton("Consultar");
+		btnCheckout.addActionListener(new ActionListener() {
+			private Hospede hospede;
+			private Quarto quarto;
+			public void actionPerformed(ActionEvent e) {
+				try {
+					String CPF = (textCPF.getText());
+					dao = new Metodo();	
+					hospede = dao.consultarhospede(CPF);
+					quarto = dao.consultarquarto(CPF);								
+					textNomeHospede.setText(hospede.getNome());
+					textEndereco.setText(hospede.getEndereco());
+					String idade = String.valueOf(hospede.getIdade());  
+					textIdade.setText(idade);					
+					textRG.setText(hospede.getRG());
+					textNumQuarto.setText(quarto.getNumero());
+					
+					JOptionPane.showMessageDialog(null, "Consulta realizada com sucesso!");
+				} catch (Exception erro) {
+					JOptionPane.showMessageDialog(null, "Por favor verifique o CPF e tente novamente");
+}
+
+			}
+		});
+
 		btnCheckout.setForeground(UIManager.getColor("Button.darkShadow"));
 		btnCheckout.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		btnCheckout.setBounds(526, 443, 136, 46);

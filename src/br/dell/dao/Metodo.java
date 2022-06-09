@@ -102,16 +102,14 @@ public class Metodo {
 		}
 
 		
-		public Hospede consultar(int RGM) throws Exception {
+		public Hospede consultarhospede(String CPF) throws Exception {
 
 			try {
 
 				hospede = new Hospede();
-
-				String sql = "SELECT * FROM hospede WHERE RGM=?";
-
+				String sql = "SELECT * FROM hospede WHERE CPF=?";
 				ps = conn.prepareStatement(sql);
-				ps.setInt(1, RGM);
+				ps.setString(1, CPF);
 				rs = ps.executeQuery();
 
 				while (rs.next()) {
@@ -124,11 +122,33 @@ public class Metodo {
 
 				}
 
-				return hospede;
 
+				return hospede;
 			} catch (Exception e) {
 				throw new Exception("Erro: " + e.getMessage());
 			}
+		}
+		public Quarto consultarquarto(String CPF) throws Exception {
+			try {
+
+				quarto = new Quarto();
+				String sql = "SELECT numero FROM quarto WHERE CPF=?";
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, CPF);
+				rs = ps.executeQuery();
+
+				while (rs.next()) {
+					quarto = new Quarto();
+					quarto.setNumero(rs.getString(1));
+
+				}
+
+
+				return quarto;
+			} catch (Exception e) {
+				throw new Exception("Erro: " + e.getMessage());
+			}
+			
 
 		}
 	

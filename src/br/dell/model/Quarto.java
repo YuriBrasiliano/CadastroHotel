@@ -3,7 +3,21 @@ package br.dell.model;
 public class Quarto {
 	private String numero;
 	private Hospede hospede;
+	private String dta_entrada;
+	private String dta_saida;
 	
+	public String getDta_entrada() {
+		return dta_entrada;
+	}
+	public void setDta_entrada(String dta_entrada) {
+		this.dta_entrada = dta_entrada;
+	}
+	public String getDta_saida() {
+		return dta_saida;
+	}
+	public void setDta_saida(String dta_saida) {
+		this.dta_saida = dta_saida;
+	}
 	public String getNumero() {
 		return numero;
 	}

@@ -22,6 +22,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTextArea;
 
 public class Principal {
 
@@ -63,100 +64,204 @@ public class Principal {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
+	private static String gerarQuarto(){
+		int qtdeMaximaCaracteres = 3;
+	    String[] numeros = {"1","2","3"};
+	    String[] letras = { "A", "B", "C"};
+	    
+		StringBuilder quarto = new StringBuilder();
+
+        for (int i = 0; i < 1; i++) {
+            int posicao = (int) (Math.random() * letras.length);
+            quarto.append(letras[posicao]);
+        }
+        for (int i = 1; i < qtdeMaximaCaracteres; i++) {
+            int posicao = (int) (Math.random() * numeros.length);
+            quarto.append(numeros[posicao]);
+        }
+        return quarto.toString();
+        
+	}
 	private void initialize() {
 		frmHotel = new JFrame();
 		frmHotel.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		frmHotel.setTitle("Hotel");
 		frmHotel.getContentPane().setForeground(UIManager.getColor("Button.darkShadow"));
 		frmHotel.getContentPane().setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-		frmHotel.setBounds(100, 100, 891, 562);
+		frmHotel.setBounds(100, 100, 835, 693);
 		frmHotel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmHotel.getContentPane().setLayout(null);
 		
 		JLabel lblNome = new JLabel("Nome do Hospede");
 		lblNome.setFont(new Font("Yu Gothic UI", Font.BOLD | Font.ITALIC, 20));
-		lblNome.setBounds(108, 11, 191, 37);
+		lblNome.setBounds(88, 11, 191, 37);
 		frmHotel.getContentPane().add(lblNome);
 		
 		JLabel lblCpf = new JLabel("CPF");
 		lblCpf.setFont(new Font("Yu Gothic UI", Font.BOLD | Font.ITALIC, 20));
-		lblCpf.setBounds(108, 71, 53, 25);
+		lblCpf.setBounds(88, 71, 53, 25);
 		frmHotel.getContentPane().add(lblCpf);
 		
 		JLabel lblRg = new JLabel("RG");
 		lblRg.setFont(new Font("Yu Gothic UI", Font.BOLD | Font.ITALIC, 20));
-		lblRg.setBounds(108, 130, 42, 25);
+		lblRg.setBounds(88, 130, 42, 25);
 		frmHotel.getContentPane().add(lblRg);
+		
+		final JComboBox comboDia_Entrada = new JComboBox();
+		comboDia_Entrada.setModel(new DefaultComboBoxModel(new String[] {"", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
+		comboDia_Entrada.setBounds(342, 318, 65, 30);
+		frmHotel.getContentPane().add(comboDia_Entrada);
+		
+		final JComboBox comboDia_Saida = new JComboBox();
+		comboDia_Saida.setModel(new DefaultComboBoxModel(new String[] {"", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"}));
+		comboDia_Saida.setBounds(342, 387, 65, 30);
+		frmHotel.getContentPane().add(comboDia_Saida);
+		
+		final JComboBox comboMes_Entrada = new JComboBox();
+		comboMes_Entrada.setModel(new DefaultComboBoxModel(new String[] {"", "Janeiro", "Fevereiro", "Mar\u00E7o", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"}));
+		comboMes_Entrada.setBounds(436, 318, 170, 30);
+		frmHotel.getContentPane().add(comboMes_Entrada);
+		
+		final JComboBox comboMes_Saida = new JComboBox();
+		comboMes_Saida.setModel(new DefaultComboBoxModel(new String[] {"", "Janeiro", "Fevereiro", "Mar\u00E7o", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"}));
+		comboMes_Saida.setBounds(436, 387, 170, 30);
+		frmHotel.getContentPane().add(comboMes_Saida);
+		
+		final JComboBox comboAno_Entrada = new JComboBox();
+		comboAno_Entrada.setModel(new DefaultComboBoxModel(new String[] {"", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"}));
+		comboAno_Entrada.setBounds(633, 318, 99, 30);
+		frmHotel.getContentPane().add(comboAno_Entrada);
+		
+		final JComboBox comboAno_Saida = new JComboBox();
+		comboAno_Saida.setModel(new DefaultComboBoxModel(new String[] {"", "2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"}));
+		comboAno_Saida.setBounds(633, 387, 99, 30);
+		frmHotel.getContentPane().add(comboAno_Saida);
 		
 		JLabel lblIdade = new JLabel("Idade");
 		lblIdade.setFont(new Font("Yu Gothic UI", Font.BOLD | Font.ITALIC, 20));
-		lblIdade.setBounds(107, 192, 65, 25);
+		lblIdade.setBounds(87, 192, 65, 25);
 		frmHotel.getContentPane().add(lblIdade);
 		
 		JLabel lblEndereco = new JLabel("Endereco");
 		lblEndereco.setFont(new Font("Yu Gothic UI", Font.BOLD | Font.ITALIC, 20));
-		lblEndereco.setBounds(108, 249, 96, 25);
+		lblEndereco.setBounds(88, 249, 96, 25);
 		frmHotel.getContentPane().add(lblEndereco);
 		
 		JLabel lblNumQuarto = new JLabel("N\u00FAmero do Quarto");
 		lblNumQuarto.setFont(new Font("Yu Gothic UI", Font.BOLD | Font.ITALIC, 20));
-		lblNumQuarto.setBounds(315, 323, 180, 25);
+		lblNumQuarto.setBounds(322, 462, 180, 25);
 		frmHotel.getContentPane().add(lblNumQuarto);
 		
 		textNomeHospede = new JTextField();
-		textNomeHospede.setBounds(362, 15, 390, 33);
+		textNomeHospede.setBounds(342, 15, 390, 33);
 		frmHotel.getContentPane().add(textNomeHospede);
 		textNomeHospede.setColumns(10);
 		
 		textRG = new JTextField();
 		textRG.setColumns(10);
-		textRG.setBounds(362, 131, 390, 33);
+		textRG.setBounds(342, 131, 390, 33);
 		frmHotel.getContentPane().add(textRG);
 		
 		textCPF = new JTextField();
 		textCPF.setColumns(10);
-		textCPF.setBounds(362, 72, 390, 33);
+		textCPF.setBounds(342, 72, 390, 33);
 		frmHotel.getContentPane().add(textCPF);
 		
 		textIdade = new JTextField();
 		textIdade.setColumns(10);
-		textIdade.setBounds(362, 193, 96, 33);
+		textIdade.setBounds(342, 193, 96, 33);
 		frmHotel.getContentPane().add(textIdade);
 		
 		textEndereco = new JTextField();
 		textEndereco.setColumns(10);
-		textEndereco.setBounds(362, 250, 390, 33);
+		textEndereco.setBounds(342, 250, 390, 33);
 		frmHotel.getContentPane().add(textEndereco);
 		
 		textNumQuarto = new JTextField();
-		textNumQuarto.setBounds(270, 357, 278, 37);
+		textNumQuarto.setBounds(277, 496, 278, 37);
 		frmHotel.getContentPane().add(textNumQuarto);
 		textNumQuarto.setColumns(10);
+		
+		
 		
 		JButton btnNewButton = new JButton("Check-In");
 		btnNewButton.addActionListener(new ActionListener() {
 			private Hospede hospede;
 			private Quarto quarto;
 			public void actionPerformed(ActionEvent e) {
+				String dia_entrada = String.valueOf(comboDia_Entrada.getSelectedItem());
+				if(dia_entrada.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Por Favor selecione um dia válido!");	
+				}
+				String mes_entrada = String.valueOf(comboMes_Entrada.getSelectedItem());
+				switch (mes_entrada) {
+				case "Janeiro": mes_entrada = "01";break;
+				case "Fevereiro": mes_entrada = "02";break;
+				case "Março": mes_entrada = "03";break;
+				case "Abril": mes_entrada = "04";break;
+				case "Maio": mes_entrada = "05";break;
+				case "Junho": mes_entrada = "06";break;
+				case "Julho": mes_entrada = "07";break;
+				case "Agosto": mes_entrada = "08";break;
+				case "Setembro": mes_entrada = "09";break;
+				case "Outubro": mes_entrada = "10";break;
+				case "Novembro": mes_entrada = "11";break;
+				case "Dezembro": mes_entrada = "12";break;
+				default:JOptionPane.showMessageDialog(null, "Por Favor selecione um mês válido!");	
+				}
+				String ano_entrada = String.valueOf(comboAno_Entrada.getSelectedItem());
+				if(ano_entrada.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Por Favor selecione um ano válido!");	
+				}
+				String dta_entrada = dia_entrada+mes_entrada+ano_entrada;
+				String dia_saida = String.valueOf(comboDia_Saida.getSelectedItem());
+				if(dia_saida.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Por Favor selecione um dia válido!");	
+				}
+				String mes_saida = String.valueOf(comboMes_Saida.getSelectedItem());
+				switch (mes_saida) {
+				case "Janeiro": mes_saida = "01";break;
+				case "Fevereiro": mes_saida = "02";break;
+				case "Março": mes_saida = "03";break;
+				case "Abril": mes_saida = "04";break;
+				case "Maio": mes_saida = "05";break;
+				case "Junho": mes_saida = "06";break;
+				case "Julho": mes_saida = "07";break;
+				case "Agosto": mes_saida = "08";break;
+				case "Setembro": mes_saida = "09";break;
+				case "Outubro": mes_saida = "10";break;
+				case "Novembro": mes_saida = "11";break;
+				case "Dezembro": mes_saida = "12";break;
+				default:JOptionPane.showMessageDialog(null, "Por Favor selecione um mês válido!");	
+				}
+				String ano_saida = String.valueOf(comboAno_Saida.getSelectedItem());
+				if(ano_saida.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Por Favor selecione um ano válido!");	
+				}
+				String dta_saida = dia_saida+mes_saida+ano_saida;
 				try {
 					hospede = new Hospede();
 					quarto = new Quarto();
 					hospede.setCPF(textCPF.getText());
-					hospede.setNome(textNomeHospede.getText());
+					String nomeHospede = textNomeHospede.getText();
+					hospede.setNome(nomeHospede);
 					hospede.setRG(textRG.getText());
 					hospede.setIdade(Integer.parseInt(textIdade.getText()));
 					hospede.setEndereco(textEndereco.getText());
-					quarto.setNumero(textNumQuarto.getText());
+					String Numquarto = textNumQuarto.getText();
+					if (Numquarto.isEmpty()) {
+						Numquarto = gerarQuarto();
+					}
+					quarto.setNumero(Numquarto);
+					quarto.setDta_entrada(dta_entrada);
+					quarto.setDta_saida(dta_saida);
 					dao = new Metodo();
 					dao.checkin(hospede,quarto);
-					JOptionPane.showMessageDialog(null, "Cadastro salvado com sucesso!");	
-
+					JOptionPane.showMessageDialog(null, "Check-In realizado com sucesso! O Senhor(a) "+nomeHospede+" ficará no quarto "+Numquarto);	
+					textNumQuarto.setText(quarto.getNumero());
 
 				} catch (Exception erro) {
-					JOptionPane.showMessageDialog(null, "Houve um erro, o quarto está em uso ou o hospede está em outro quarto, faça o check-out e tente novamente");	
+					JOptionPane.showMessageDialog(null, "Houve um erro, o quarto está em uso ou o hospede está em outro quarto, faça o check-out e tente novamente"+erro);	
 
 
 				}
@@ -164,7 +269,7 @@ public class Principal {
 		});
 		btnNewButton.setForeground(UIManager.getColor("Button.darkShadow"));
 		btnNewButton.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-		btnNewButton.setBounds(43, 443, 136, 46);
+		btnNewButton.setBounds(20, 577, 136, 46);
 		frmHotel.getContentPane().add(btnNewButton);
 		
 		btnExcluir = new JButton("Excluir");
@@ -183,7 +288,7 @@ public class Principal {
 		});
 		btnExcluir.setForeground(UIManager.getColor("Button.darkShadow"));
 		btnExcluir.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-		btnExcluir.setBounds(203, 443, 136, 46);
+		btnExcluir.setBounds(180, 577, 136, 46);
 		frmHotel.getContentPane().add(btnExcluir);
 		
 		btnAlterar = new JButton("Alterar");
@@ -212,7 +317,7 @@ public class Principal {
 		});
 		btnAlterar.setForeground(UIManager.getColor("Button.darkShadow"));
 		btnAlterar.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-		btnAlterar.setBounds(363, 443, 136, 46);
+		btnAlterar.setBounds(340, 577, 136, 46);
 		frmHotel.getContentPane().add(btnAlterar);
 		
 		btnCheckout = new JButton("Consultar");
@@ -242,7 +347,7 @@ public class Principal {
 
 		btnCheckout.setForeground(UIManager.getColor("Button.darkShadow"));
 		btnCheckout.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-		btnCheckout.setBounds(526, 443, 136, 46);
+		btnCheckout.setBounds(503, 577, 136, 46);
 		frmHotel.getContentPane().add(btnCheckout);
 		
 		btnCheckout_1 = new JButton("Check-Out");
@@ -262,7 +367,19 @@ public class Principal {
 		
 		btnCheckout_1.setForeground(UIManager.getColor("Button.darkShadow"));
 		btnCheckout_1.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
-		btnCheckout_1.setBounds(684, 443, 136, 46);
+		btnCheckout_1.setBounds(661, 577, 136, 46);
 		frmHotel.getContentPane().add(btnCheckout_1);
+		
+		JLabel lblDta_Entrada = new JLabel("Data de Entrada");
+		lblDta_Entrada.setFont(new Font("Yu Gothic UI", Font.BOLD | Font.ITALIC, 20));
+		lblDta_Entrada.setBounds(88, 318, 159, 30);
+		frmHotel.getContentPane().add(lblDta_Entrada);
+		
+		JLabel lblDta_Saida = new JLabel("Data de Sa\u00EDda");
+		lblDta_Saida.setFont(new Font("Yu Gothic UI", Font.BOLD | Font.ITALIC, 20));
+		lblDta_Saida.setBounds(88, 387, 136, 30);
+		frmHotel.getContentPane().add(lblDta_Saida);
+		
+
 	}
 }

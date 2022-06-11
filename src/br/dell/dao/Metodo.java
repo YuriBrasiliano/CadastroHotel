@@ -43,11 +43,13 @@ public class Metodo {
 				throw new Exception("Erro " + erro.getMessage());
 			}
 			try {
-				String sql = "INSERT INTO quarto values (?, ?, ?)";
+				String sql = "INSERT INTO quarto values (?, ?, ?, ?, ?)";
 				ps = conn.prepareStatement(sql);
 				ps.setString(1, quarto.getNumero());
 				ps.setString(2, hospede.getNome());
 				ps.setString(3, hospede.getCPF());
+				ps.setString(4, quarto.getDta_entrada());
+				ps.setString(5, quarto.getDta_saida());
 				ps.executeUpdate();
 				
 			} catch (Exception erro) {
